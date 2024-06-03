@@ -1,75 +1,69 @@
-import Foundation
 import SwiftUI
 import UserNotifications
 
 struct ContentView: View {
-    @State var pets = [
-        Pet(name: "Mel 🐩", description: "Tem medo de pássaros!"),
-        Pet(name: "Bono 🐕", description: "Cuidado com gatos!"),
-        Pet(name: "Kayla 🐕‍🦺", description: "Adora fazer amizades!") ]
-    
+    var pets = [
+        Pet(name: "Mel 🐩"),
+        Pet(name: "Bono 🐕"),
+        Pet(name: "Kayla 🐕‍🦺") ]
+        
     var body: some View {
         VStack {
-            Text("Notificação Pets")
+            Text("Passear com os Pets")
                 .font(.title2)
-            ForEach($pets.indices, id: \.self) { index in
-                Toggle(pets[index].name, isOn: $pets[index].notificate)
+            ForEach(pets.indices, id: \.self) { index in
+                CheckButton(pet: pets[index])
             }
         }
         .padding()
     }
 }
 
-class Pet {
-    var name: String
-    var description: String
-    var notificate: Bool = false {
-        willSet {
-            if newValue {
-                checkNotificationAuthorization()
+struct CheckButton: View {
+    @ObservedObject var pet: Pet
+    
+    var body: some View {
+        HStack {
+            Text(pet.name)
+            Spacer()
+            Button {
+                postNotification(pet)
+            } label: {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(pet.isTapped ? .green : .red)
+                    .frame(width: 70, height: 30)
+                    .overlay(Text(pet.isTapped ? "Já fui" : "Não fui")
+                        .foregroundStyle(.white)
+                        .bold())
             }
         }
     }
     
-    init(name: String, description: String) {
+    func postNotification(_ pet: Pet) {
+        NotificationCenter.default.post(name: .changeButtonColor, object: nil, userInfo: ["petName": pet.name])
+    }
+}
+
+
+class Pet: ObservableObject {
+    var name: String
+    @Published var isTapped: Bool = false
+    
+    init(name: String) {
         self.name = name
-        self.description = description
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changeButton),
+                                               name: .changeButtonColor,
+                                               object: nil)
+        
     }
     
-    func checkNotificationAuthorization() {
-                UNUserNotificationCenter.current().getNotificationSettings { settings in
-                    switch settings.authorizationStatus {
-                    case .authorized:
-                        print("Permissão para notificações foi concedida.")
-                        self.scheduleNotfication(name: self.name, description: self.description)
-                    case .denied:
-                        print("Permissão para notificações foi negada. Vá em configurações e autorize por favor.")
-                    case .notDetermined:
-                        print("Permissão está sendo solicitada")
-                        self.scheduleNotfication(name: self.name, description: self.description)
-                    case .provisional:
-                        print("Permissão para notificações concedida de forma provisória.")
-                    case .ephemeral:
-                        print("case unUsed")
-                    @unknown default:
-                        print("Caso desconhecido.")
-                    }
-                }
+    @objc func changeButton(_ notification: Notification) {
+        if let petName = notification.userInfo?["petName"] as? String {
+            if self.name == petName {
+                self.isTapped.toggle()
             }
-    
-    func scheduleNotfication(name: String, description: String) {
-        
-            let content = UNMutableNotificationContent()
-            content.title = "Hora de passear com \(name)"
-            content.subtitle = description
-            content.sound = UNNotificationSound.default
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-            
-            UNUserNotificationCenter.current().add(request)
-        
+        }
     }
 }
 

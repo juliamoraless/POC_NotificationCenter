@@ -9,9 +9,6 @@ import SwiftUI
 
 @main
 struct POC_NotificationCenterApp: App {
-    
-    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
