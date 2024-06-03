@@ -1,4 +1,3 @@
-import Foundation
 import SwiftUI
 import UserNotifications
 
@@ -26,6 +25,7 @@ class Pet {
     var notificate: Bool = false {
         willSet {
             if newValue {
+                requestNotificationAuthorization()
                 checkNotificationAuthorization()
             }
         }
@@ -34,6 +34,16 @@ class Pet {
     init(name: String, description: String) {
         self.name = name
         self.description = description
+    }
+    
+    func requestNotificationAuthorization() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                print("Permissão para notificações concedida com sucesso!")
+            } else if let error {
+                print("Erro ao solicitar permissão para notificações:", error.localizedDescription)
+            }
+        }
     }
     
     func checkNotificationAuthorization() {
@@ -71,6 +81,8 @@ class Pet {
             UNUserNotificationCenter.current().add(request)
         
     }
+    
+    
 }
 
 #Preview {

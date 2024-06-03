@@ -11,7 +11,6 @@
 		C816D9F02C0E3E8E0041FF65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816D9EF2C0E3E8E0041FF65 /* ContentView.swift */; };
 		C816D9F22C0E3E8E0041FF65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C816D9F12C0E3E8E0041FF65 /* Assets.xcassets */; };
 		C816D9F62C0E3E8E0041FF65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C816D9F52C0E3E8E0041FF65 /* Preview Assets.xcassets */; };
-		C816D9FD2C0E3F030041FF65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816D9FC2C0E3F030041FF65 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +20,6 @@
 		C816D9F12C0E3E8E0041FF65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C816D9F32C0E3E8E0041FF65 /* POC_NotificationCenter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = POC_NotificationCenter.entitlements; sourceTree = "<group>"; };
 		C816D9F52C0E3E8E0041FF65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C816D9FC2C0E3F030041FF65 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +52,6 @@
 		C816D9EC2C0E3E8E0041FF65 /* POC_NotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
-				C816D9FC2C0E3F030041FF65 /* AppDelegate.swift */,
 				C816D9ED2C0E3E8E0041FF65 /* POC_NotificationCenterApp.swift */,
 				C816D9EF2C0E3E8E0041FF65 /* ContentView.swift */,
 				C816D9F12C0E3E8E0041FF65 /* Assets.xcassets */,
@@ -142,7 +139,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C816D9FD2C0E3F030041FF65 /* AppDelegate.swift in Sources */,
 				C816D9F02C0E3E8E0041FF65 /* ContentView.swift in Sources */,
 				C816D9EE2C0E3E8E0041FF65 /* POC_NotificationCenterApp.swift in Sources */,
 			);
