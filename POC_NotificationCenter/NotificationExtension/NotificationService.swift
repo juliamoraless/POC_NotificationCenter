@@ -6,6 +6,7 @@
 //
 
 import UserNotifications
+import SwiftUI
 
 class NotificationService: UNNotificationServiceExtension {
 

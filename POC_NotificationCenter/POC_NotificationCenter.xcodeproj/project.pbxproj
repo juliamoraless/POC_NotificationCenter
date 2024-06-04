@@ -453,7 +453,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.POC-NotificationCenter.NotificationExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.POCNotificationCenter.NotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -480,7 +480,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.POC-NotificationCenter.NotificationExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.POCNotificationCenter.NotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
