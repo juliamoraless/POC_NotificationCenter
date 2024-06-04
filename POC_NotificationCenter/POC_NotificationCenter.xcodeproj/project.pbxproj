@@ -54,9 +54,9 @@
 		C816D9EC2C0E3E8E0041FF65 /* POC_NotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
-				C816D9FC2C0E3F030041FF65 /* AppDelegate.swift */,
 				C816D9ED2C0E3E8E0041FF65 /* POC_NotificationCenterApp.swift */,
 				C816D9EF2C0E3E8E0041FF65 /* ContentView.swift */,
+				C816D9FC2C0E3F030041FF65 /* AppDelegate.swift */,
 				C816D9F12C0E3E8E0041FF65 /* Assets.xcassets */,
 				C816D9F32C0E3E8E0041FF65 /* POC_NotificationCenter.entitlements */,
 				C816D9F42C0E3E8E0041FF65 /* Preview Content */,
